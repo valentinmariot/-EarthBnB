@@ -8,11 +8,6 @@ services:
             - 5555:80
         env_file:
             - .env
-        # environment:
-        #     WORDPRESS_DB_HOST: db
-        #     WORDPRESS_DB_USER: exampleuser
-        #     WORDPRESS_DB_PASSWORD: examplepass
-        #     WORDPRESS_DB_NAME: exampledb
         volumes:
             - ./wordpress:/var/www/html
 
@@ -21,12 +16,9 @@ services:
         restart: always
         env_file:
             - .env
-        # environment:
-        #     MYSQL_DATABASE: data
-        #     MYSQL_ROOT_PASSWORD: password
         volumes:
             - wordpress-data:/var/lib/mysql
-            # - ./DumpSQL/data.sql:/docker-entrypoint-initdb.d/data.sql
+            - ./dumpSql/data.sql:/docker-entrypoint-initdb.d/data.sql
 
     phpmyadmin:
         image: phpmyadmin
