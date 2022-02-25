@@ -17,10 +17,13 @@ class BannerPlugin
     function activate() {
         // generate a CPT
         // flush rewrite rules
+        flush_rewrite_rules();
     }
 
     function deactivate() {
         // flush rewrite rules
+        flush_rewrite_rules();
+    }
 
     }
 
