@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-    <?php while(have_posts() : the_post()); ?>
+    <?php while(have_posts()) : the_post(); ?>
         <div>
             <img src="<?php the_post_thumbnail_url() ; ?> alt="image annonce">
         </div>
