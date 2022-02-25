@@ -15,9 +15,16 @@
 
     <?php wp_head(); ?>
 </head>
-    <body>
+
+<?php 
+    is_front_page() ? $ebnbClass = array('earbnb-class', 'ebnb-class') : $ebnbClass = array('other-ebnb-class')
+?>
+
+    <body <?php body_class($ebnbClass); ?>>
 
         <header>
             <?php wp_nav_menu(array('theme_location'=>'header')); ?>
         </header>
-    
+   
+        <!-- // @NOTE : TODO -> remove <hr> -->
+        <hr/>

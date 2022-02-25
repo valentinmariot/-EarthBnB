@@ -47,7 +47,7 @@ function register_my_cpt_ad()
 {
     $labels = [
         "name" => __("Ads", "Post Type General Name"),
-        "singular_name" => ("Ad", "Post Type General Name"),
+        "singular_name" => __("Ad", "Post Type General Name"),
         "search_items" => __("Rechercher une annonce"),
         "all_items" => __("Toutes les annonces"),
         "add_new_item" => __("Ajouter une annonce"),
