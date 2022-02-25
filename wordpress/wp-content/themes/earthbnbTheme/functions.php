@@ -1,10 +1,9 @@
 <?php
-
+#theme setup
 function earthbnb_script_enqueue() {
     wp_enqueue_style('customstyle', get_template_directory_uri() . '/css/earthbnb.css', array(), '1.0.0', 'all');
     wp_enqueue_style('customsjs', get_template_directory_uri() . '/js/earthbnb.js', array(), '1.0.0', true);
 }
-
 add_action('wp_enqueue_scripts', 'earthbnb_script_enqueue');
 
 add_action('after_setup_theme', 'earthbnb_theme_setup');
@@ -17,8 +16,6 @@ function earthbnb_theme_setup()
     register_nav_menu('footer', 'Footer navigation');
 }
 
-
-
 // add_action('wp_enqueue_scripts', 'wpheticBootstrap');
 // function wpheticBootstrap()
 // {
@@ -26,9 +23,22 @@ function earthbnb_theme_setup()
 //     wp_enqueue_script("bootstrap_js", "https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js", [], false, true);
 // }
 
+#login management
+function wpdocs_my_login_redirect( $url, $request, $user ) {
+    if ( $user && is_object( $user ) && is_a( $user, 'WP_User' ) ) {
+        if ( $user->has_cap( 'administrator' || 'manage_ad') ) {
+            $url = admin_url();
+        } else {
+            $url = home_url( '/account/' );
+        }
+    }
+    return $url;
+}
+add_filter( 'login_redirect', 'wpdocs_my_login_redirect', 10, 3 );
 
-                                     
-                                     
-                                     
-                                     
-                                     
+add_action('after_setup_theme', 'remove_admin_bar');
+function remove_admin_bar(){
+    if (!current_user_can('manage_options') ) {
+        add_filter('show_admin_bar', '__return_false');
+    }
+}
