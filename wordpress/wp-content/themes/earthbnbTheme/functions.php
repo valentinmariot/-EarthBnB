@@ -43,11 +43,12 @@ function remove_admin_bar(){
     }
 }
 
+#Add CPT
 function register_my_cpt_ad()
 {
     $labels = [
         "name" => __("Ads", "Post Type General Name"),
-        "singular_name" => ("Ad", "Post Type General Name"),
+        "singular_name" => __("Ad", "Post Type General Name"),
         "search_items" => __("Rechercher une annonce"),
         "all_items" => __("Toutes les annonces"),
         "add_new_item" => __("Ajouter une annonce"),
@@ -99,6 +100,88 @@ function register_my_cpt_ad()
 }
 
 add_action('init', 'register_my_cpt_ad');
+
+#Add taxonomies
+add_action('init', 'add_taxonomies');
+function add_taxonomies(){
+    #distance taxonomy
+    $labels_distance = array(
+        'name' => __('Distances', 'taxonomy general name'),
+        'singular_name' =>__('Distance', 'taxonomy singular name'),
+        'search_items' => __('Chercher une distance'),
+        'all_items' => __('Toutes les distances'),
+        'edit_item' => __('Mettre à jour la distance'),
+        'update_item' => __('Mettre à jour la distance'),
+        'add_new_item' => __('Ajouter'),
+        'new_item_name' => __('Ajouter'),
+        'separate_items_with_commas' => __('Séparer les valeurs par une virgule'),
+        'menu_name' => __('Distance'),
+    );
+
+    $args_distance = array(
+        'hierarchical' => true,
+        'labels' =>  $labels_distance,
+        'public' => true,
+        'show_ui' => true,
+        'show_in_rest' => true,
+        'show_admin_column' => true,
+        'query_var' => true,
+    );
+
+    register_taxonomy('distance','ads', $args_distance);
+
+    #weather taxonomy
+    $labels_weather = array(
+        'name' => __('Meteo', 'taxonomy general name'),
+        'singular_name' =>__('Meteo', 'taxonomy singular name'),
+        'search_items' => __('Chercher une meteo'),
+        'all_items' => __('Toutes les meteo'),
+        'edit_item' => __('Mettre à jour la meteo'),
+        'update_item' => __('Mettre à jour la meteo'),
+        'add_new_item' => __('Ajouter'),
+        'new_item_name' => __('Ajouter'),
+        'separate_items_with_commas' => __('Séparer les valeurs par une virgule'),
+        'menu_name' => __('Meteo'),
+    );
+
+    $args_weather = array(
+        'hierarchical' => true,
+        'labels' =>  $labels_weather,
+        'public' => true,
+        'show_ui' => true,
+        'show_in_rest' => true,
+        'show_admin_column' => true,
+        'query_var' => true,
+    );
+
+    register_taxonomy('weather','ads', $args_weather);
+
+    #price taxonomy
+    $labels_price = array(
+        'name' => __('Prix', 'taxonomy general name'),
+        'singular_name' =>__('Prix', 'taxonomy singular name'),
+        'search_items' => __('Chercher un prix'),
+        'all_items' => __('Tous les prix'),
+        'edit_item' => __('Mettre à jour le prix'),
+        'update_item' => __('Mettre à jour le prix'),
+        'add_new_item' => __('Ajouter'),
+        'new_item_name' => __('Ajouter'),
+        'separate_items_with_commas' => __('Séparer les valeurs par une virgule'),
+        'menu_name' => __('Prix'),
+    );
+
+    $args_price = array(
+        'hierarchical' => true,
+        'labels' =>  $labels_price,
+        'public' => true,
+        'show_ui' => true,
+        'show_in_rest' => true,
+        'show_admin_column' => true,
+        'query_var' => true,
+    );
+
+    register_taxonomy('price','ads', $args_price);
+}
 
 #profile management
 
