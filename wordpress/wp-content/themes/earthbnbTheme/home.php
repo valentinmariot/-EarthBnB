@@ -6,7 +6,7 @@
 
 <?php get_header(); ?>
 
-<h1>Home template</h1>
+    <h1>Home template</h1>
 
  <?php 
     if (have_posts()) : 
