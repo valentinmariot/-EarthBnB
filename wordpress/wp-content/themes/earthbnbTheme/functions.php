@@ -104,23 +104,23 @@ add_action('init', 'register_my_cpt_ad');
 #Add taxonomies
 add_action('init', 'add_taxonomies');
 function add_taxonomies(){
-    #distance taxonomy
-    $labels_distance = array(
-        'name' => __('Distances', 'taxonomy general name'),
-        'singular_name' =>__('Distance', 'taxonomy singular name'),
-        'search_items' => __('Chercher une distance'),
-        'all_items' => __('Toutes les distances'),
-        'edit_item' => __('Mettre à jour la distance'),
-        'update_item' => __('Mettre à jour la distance'),
+    #landscape taxonomy
+    $labels_landscape = array(
+        'name' => __('Paysages', 'taxonomy general name'),
+        'singular_name' =>__('Paysage', 'taxonomy singular name'),
+        'search_items' => __('Chercher un paysage'),
+        'all_items' => __('Tous les paysages'),
+        'edit_item' => __('Mettre à jour le paysahe'),
+        'update_item' => __('Mettre à jour le paysage'),
         'add_new_item' => __('Ajouter'),
         'new_item_name' => __('Ajouter'),
         'separate_items_with_commas' => __('Séparer les valeurs par une virgule'),
-        'menu_name' => __('Distance'),
+        'menu_name' => __('Paysage'),
     );
 
-    $args_distance = array(
+    $args_landscape = array(
         'hierarchical' => true,
-        'labels' =>  $labels_distance,
+        'labels' =>  $labels_landscape,
         'public' => true,
         'show_ui' => true,
         'show_in_rest' => true,
@@ -128,7 +128,7 @@ function add_taxonomies(){
         'query_var' => true,
     );
 
-    register_taxonomy('distance','ads', $args_distance);
+    register_taxonomy('landscape','ads', $args_landscape);
 
     #weather taxonomy
     $labels_weather = array(
@@ -156,23 +156,23 @@ function add_taxonomies(){
 
     register_taxonomy('weather','ads', $args_weather);
 
-    #price taxonomy
-    $labels_price = array(
-        'name' => __('Prix', 'taxonomy general name'),
-        'singular_name' =>__('Prix', 'taxonomy singular name'),
-        'search_items' => __('Chercher un prix'),
-        'all_items' => __('Tous les prix'),
-        'edit_item' => __('Mettre à jour le prix'),
-        'update_item' => __('Mettre à jour le prix'),
+    #activity taxonomy
+    $labels_activity = array(
+        'name' => __('Activités', 'taxonomy general name'),
+        'singular_name' =>__('Activité', 'taxonomy singular name'),
+        'search_items' => __('Chercher une activité'),
+        'all_items' => __('Tous les activités'),
+        'edit_item' => __('Mettre à jour activité'),
+        'update_item' => __('Mettre à jour activité'),
         'add_new_item' => __('Ajouter'),
         'new_item_name' => __('Ajouter'),
         'separate_items_with_commas' => __('Séparer les valeurs par une virgule'),
-        'menu_name' => __('Prix'),
+        'menu_name' => __('Activité'),
     );
 
-    $args_price = array(
+    $args_activity = array(
         'hierarchical' => true,
-        'labels' =>  $labels_price,
+        'labels' =>  $labels_activity,
         'public' => true,
         'show_ui' => true,
         'show_in_rest' => true,
@@ -180,7 +180,7 @@ function add_taxonomies(){
         'query_var' => true,
     );
 
-    register_taxonomy('price','ads', $args_price);
+    register_taxonomy('price','ads', $args_activity);
 }
 
 #profile management
