@@ -6,15 +6,15 @@
 
 <?php get_header(); ?>
 
-    <h1>Home template</h1>
 
- <?php 
-    if (have_posts()) : 
-        while (have_posts()): 
-            the_post();
-?>
+<div>
+    <h1>Quelle sera votre prochaine destination ?</h1>
+    <?php get_search_form() ?>
+    <a href="/liste-annonces/">Je suis flexible</a>
+</div>
 
-
-<?php endwhile; ?>
-<?php endif;?>
+<div>
+    <h2>Dernières annonces publiées</h2>
+    <?php wp_last_adds(); ?>
+</div>
 <?php get_footer(); ?>
