@@ -200,3 +200,64 @@ add_action('switch_theme', function (){
     $admin->remove_cap('manage_ads');
     remove_role('ad_manager');
 });
+
+#display last 3 adds
+function wp_last_adds() {
+    $args = array(
+        'posts_per_page' => '3',
+        'post_type' => 'ads',
+        'post_status' => 'publish',
+        'orderby' => 'date',
+    );
+
+    $query = new WP_Query($args);
+    while($query -> have_posts()) :
+        $query->the_post();
+        echo '<li><a href="'.get_the_permalink().'" rel="bookmark">'.get_the_title().'</a></li>';
+        echo get_the_excerpt();
+        echo '<br><a href="'.get_permalink().'">Détails </a><br><br>';
+    endwhile;
+    wp_reset_postdata();
+};
+
+#display all adds
+function wpheticPaginate() {
+    $pages = paginate_links(['type' => 'array']);
+    if (!$pages) {
+        return null;
+    }
+
+    ob_start();
+    echo '<nav aria-label="Page navigation example">';
+    echo '<ul class="pagination">';
+
+    foreach ($pages as $page) {
+        $active = strpos($page, 'current');
+        $liClass = $active ? 'page-item active' : 'page-item';
+        $page = str_replace('page-numbers', 'page-link', $page);
+
+        echo sprintf('<li class="%s">%s</li>', $liClass, $page);
+    }
+    echo '</ul></nav>';
+
+    return ob_get_clean();
+};
+
+function wp_adds() {
+    $args = array(
+        'posts_per_page' => '9',
+        'post_type' => 'ads',
+        'post_status' => 'publish',
+        'orderby' => 'date',
+    );
+
+    $query = new WP_Query($args);
+    while($query -> have_posts()) :
+        $query->the_post();
+        echo '<li><a href="'.get_the_permalink().'" rel="bookmark">'.get_the_title().'</a></li>';
+        echo get_the_excerpt();
+        echo '<br><a href="'.get_permalink().'">Détails </a><br><br>';
+    endwhile;
+    wpheticPaginate();
+    wp_reset_postdata();
+};
