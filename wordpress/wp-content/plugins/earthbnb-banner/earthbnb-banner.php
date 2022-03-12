@@ -24,18 +24,8 @@ function earthbnb_banner_activate() {
 function get_disabled_pages_array() {
 	return array_filter(explode(',', get_option('disabled_pages_array')));
 }
-function get_post_object() {
-	return get_posts(array('include' => array(get_the_ID())));
-}
-function get_is_current_page_a_post() {
-	return !empty(get_post_object());
-}
-function get_disabled_on_posts() {
-	return get_option('disabled_on_posts');
-}
 function get_disabled_on_current_page() {
-	$disabled_on_current_page = (!empty(get_disabled_pages_array()) && in_array(get_the_ID(), get_disabled_pages_array()))
-								|| (get_disabled_on_posts() && get_is_current_page_a_post());
+	$disabled_on_current_page = (!empty(get_disabled_pages_array()) && in_array(get_the_ID(), get_disabled_pages_array()));
 	return $disabled_on_current_page;
 }
 
@@ -51,63 +41,22 @@ function earthbnb_banner() {
 		// script specific parameters
 		'version' => VERSION,
 		'hide_earthbnb_banner' => get_option('hide_earthbnb_banner'),
-		'earthbnb_banner_position' => get_option('earthbnb_banner_position'),
-		'header_margin' => get_option('header_margin'),
-		'header_padding' => get_option('header_padding'),
 		'earthbnb_banner_text' => get_option('earthbnb_banner_text'),
-		'pro_version_enabled' => get_option('pro_version_enabled'),
 		'disabled_on_current_page' => $disabled_on_current_page,
-		// debug specific parameters
-		'debug_mode' => get_option('debug_mode'),
 		'id' => get_the_ID(),
 		'disabled_pages_array' => get_disabled_pages_array(),
-		// 'post_object' => get_post_object(),
-		'is_current_page_a_post' => get_is_current_page_a_post(),
-		'disabled_on_posts' => get_disabled_on_posts(),
 		'earthbnb_banner_font_size' => get_option('earthbnb_banner_font_size'),
 		'earthbnb_banner_color' => get_option('earthbnb_banner_color'),
 		'earthbnb_banner_text_color' => get_option('earthbnb_banner_text_color'),
 		'earthbnb_banner_link_color' => get_option('earthbnb_banner_link_color'),
 		'earthbnb_banner_close_color' => get_option('earthbnb_banner_close_color'),
 		'earthbnb_banner_text' => $disabled_on_current_page ? '' : get_option('earthbnb_banner_text'),
-		// 'earthbnb_banner_custom_css' => get_option('earthbnb_banner_custom_css'),
-		// 'earthbnb_banner_scrolling_custom_css' => get_option('earthbnb_banner_scrolling_custom_css'),
-		// 'earthbnb_banner_text_custom_css' => get_option('earthbnb_banner_text_custom_css'),
-		// 'earthbnb_banner_button_css' => get_option('earthbnb_banner_button_css'),
-		// 'site_custom_css' => get_option('site_custom_css'),
-		// 'keep_site_custom_css' => get_option('keep_site_custom_css'),
-		// 'site_custom_js' => get_option('site_custom_js'),
-		// 'keep_site_custom_js' => get_option('keep_site_custom_js'),
-		// 'wp_body_open_enabled' => get_option('wp_body_open_enabled'),
-		// 'wp_body_open' => function_exists('wp_body_open'),
 		'close_button_enabled' => true,
-		// 'close_button_expiration' => get_option('close_button_expiration'),
-		// 'close_button_cookie_set' => isset($_COOKIE['earthbnbbannerclosed']),
 	);
 	// Enqueue the script
     wp_register_script('earthbnb-banner-script', plugin_dir_url( __FILE__ ) . 'earthbnb-banner.js', array( 'jquery' ), VERSION);
 	wp_localize_script('earthbnb-banner-script', 'earthbnbBannerScriptParams', $script_params);
     wp_enqueue_script('earthbnb-banner-script');
-}
-
-// Use `wp_body_open` action
-if ( function_exists( 'wp_body_open' ) && get_option('wp_body_open_enabled') ) {
-	add_action( 'wp_body_open', 'earthbnb_banner_body_open' );
-}
-function earthbnb_banner_body_open() {
-	// if not disabled use wp_body_open
-	$disabled_on_current_page = get_disabled_on_current_page();
-	$close_button_enabled = get_option('close_button_enabled');
-	$closed_cookie = $close_button_enabled && isset($_COOKIE['earthbnbbannerclosed']);
-	$closed_button = get_option('close_button_enabled') ? '<button id="earthbnb-banner-close-button" class="earthbnb-banner-button">&#x2715;</button>' : '';
-
-	if (!$disabled_on_current_page && !$closed_cookie) {
-		echo '<div id="earthbnb-banner" class="earthbnb-banner"><div class="earthbnb-banner-text"><span>' 
-		. get_option('earthbnb_banner_text') 
-		. '</span></div>' 
-		. $closed_button 
-		. '</div>';
-	}
 }
 
 // Prevent CSS removal from optimizer plugins by putting a dummy item in the
@@ -121,29 +70,11 @@ function prevent_css_removal()
 add_action( 'wp_head', 'earthbnb_banner_custom_options');
 function earthbnb_banner_custom_options()
 {
-	$closed_cookie = get_option('close_button_enabled') && isset($_COOKIE["earthbnbbannerclosed"]);
-
 	$disabled_on_current_page = get_disabled_on_current_page();
 	$banner_is_disabled = $disabled_on_current_page || get_option('hide_earthbnb_banner') == "yes";
 
-	if ($banner_is_disabled || $closed_cookie){
+	if ($banner_is_disabled){
 		echo '<style type="text/css">.earthbnb-banner{display:none;}</style>';
-	}
-
-	if (!$banner_is_disabled && !$closed_cookie && get_option('header_margin') != ""){
-		echo '<style id="earthbnb-banner-header-margin" type="text/css">header{margin-top:' . get_option('header_margin') . ';}</style>';
-	}
-
-	if (!$banner_is_disabled && !$closed_cookie && get_option('header_padding') != ""){
-		echo '<style id="earthbnb-banner-header-padding" type="text/css" >header{padding-top:' . get_option('header_padding') . ';}</style>';
-	}
-
-	if (get_option('earthbnb_banner_position') != ""){
-		if (get_option('earthbnb_banner_position') == 'footer'){
-			echo '<style type="text/css">.earthbnb-banner{position:fixed;bottom:0;}</style>';
-		} else {
-			echo '<style type="text/css">.earthbnb-banner{position:' . get_option('earthbnb_banner_position') . ';}</style>';
-		}
 	}
 
 	if (get_option('earthbnb_banner_font_size') != ""){
@@ -170,38 +101,6 @@ function earthbnb_banner_custom_options()
 
 	if (get_option('earthbnb_banner_close_color') != ""){
 		echo '<style type="text/css">.earthbnb-banner .earthbnb-banner-button{color:' . get_option('earthbnb_banner_close_color') . ';}</style>';
-	}
-
-	if (get_option('earthbnb_banner_custom_css') != ""){
-		echo '<style type="text/css">.earthbnb-banner{'. get_option('earthbnb_banner_custom_css') . '}</style>';
-	}
-
-	if (get_option('earthbnb_banner_scrolling_custom_css') != ""){
-		echo '<style type="text/css">.earthbnb-banner.earthbnb-banner-scrolling{'. get_option('earthbnb_banner_scrolling_custom_css') . '}</style>';
-	}
-
-	if (get_option('earthbnb_banner_text_custom_css') != ""){
-		echo '<style type="text/css">.earthbnb-banner .earthbnb-banner-text{'. get_option('earthbnb_banner_text_custom_css') . '}</style>';
-	}
-
-	if (get_option('earthbnb_banner_button_css') != ""){
-		echo '<style type="text/css">.earthbnb-banner .earthbnb-banner-button{'. get_option('earthbnb_banner_button_css') . '}</style>';
-	}
-
-	$remove_site_custom_css = ($banner_is_disabled || $closed_cookie) && get_option('keep_site_custom_css') == "";
-	if (!$remove_site_custom_css && get_option('site_custom_css') != "" && get_option('pro_version_enabled')) {
-		echo '<style id="earthbnb-banner-site-custom-css" type="text/css">'. get_option('site_custom_css') . '</style>';
-	} else {
-		// put a dummy element to see if css is being bundled
-		echo '<style id="earthbnb-banner-site-custom-css-dummy" type="text/css"></style>';
-	}
-
-	$remove_site_custom_js = ($banner_is_disabled || $closed_cookie) && get_option('keep_site_custom_js') == "";
-	if (!$remove_site_custom_js && get_option('site_custom_js') != "" && get_option('pro_version_enabled')) {
-		echo '<script id="earthbnb-banner-site-custom-js" type="text/javascript">'. get_option('site_custom_js') . '</script>';
-	} else {
-		// put a dummy element to see if scripts are being bundled
-		echo '<script id="earthbnb-banner-site-custom-js-dummy" type="text/javascript"></script>';
 	}
 }
 
