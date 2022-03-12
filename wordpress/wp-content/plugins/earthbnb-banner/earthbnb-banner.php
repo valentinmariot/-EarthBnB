@@ -215,7 +215,7 @@ function simple_banner_menu() {
 	// 	$admin->add_cap( $manage_simple_banner );
 	// }
 
-	add_menu_page('EarthBnB Banner Settings', 'EarthBnB Banner', $manage_simple_banner, 'earthbnb-banner-settings', 'earthbnb_banner_settings_page', 'dashicons-button');
+	add_menu_page('EarthBnB Banner Settings', 'EarthBnB Banner', $manage_simple_banner, 'simple-banner-settings', 'simple_banner_settings_page', 'dashicons-button');
 }
 
 
@@ -269,7 +269,7 @@ function simple_banner_settings() {
     );
 }
 
-function earthbnb_banner_settings_page() {
+function simple_banner_settings_page() {
 	?>
 
 	<style type="text/css" id="settings_stylesheet">
