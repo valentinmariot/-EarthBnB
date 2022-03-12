@@ -29,9 +29,5 @@ jQuery(document).ready(function ($) {
           closeBanner();
         };
     }
-
-    // Debug
-    // Console log all variables
-    console.log(earthbnbBannerScriptParams);
   }
 });
