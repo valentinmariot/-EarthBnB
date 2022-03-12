@@ -1,18 +1,33 @@
-# Une stack Docker | WordPress vierge
+# EARTHBNB
 
-Pour nos projets de base WordPress, histoire de garder un environnement de travail propre.
+Projet WEBP2023 réalisé par :    
+• Chloé DOUSTALET
+• Doriane FARAU    
+• Naiara TRIVINO     
+• Valentin MARIOT
 
-Il y a 3 modules : 
-- WordPress sur le port 5555
-- MariaDB
-- PhpMyAdmin sur le port 8080
 
-La stack expose deux volumes : 
-- un pour la BDD, histoire de facilement persister les données
-- un pour les fichiers de WordPress pour facilement les explorer et les modifier
+### Initialisation
+• 1 :      
+````
+cd wordpress/wp-content/themes/earthbnbTheme
+````
+• 2 :         
+````
+npm i
+````
 
-### Pour run
+### Lancement
+
+• Docker :      
 ````
 docker-compose up -d
 ````
-
+• SCSS => CSS :      
+````
+npm run watch
+````
+• SCSS => CSS compressé :      
+````
+npm run prod
+````

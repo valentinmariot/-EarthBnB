@@ -1,9 +1,16 @@
 <?php
+
 #theme setup
 function earthbnb_script_enqueue() {
-    wp_enqueue_style('customstyle', get_template_directory_uri() . '/css/earthbnb.css', array(), '1.0.0', 'all');
-    wp_enqueue_style('customsjs', get_template_directory_uri() . '/js/earthbnb.js', array(), '1.0.0', true);
+    wp_register_style('style', get_template_directory_uri() . '/dist/app.css', [], '1.0.0', 'all');
+    wp_enqueue_style('style');
+
+    wp_enqueue_script(('jquery'));
+
+    wp_register_script('app', get_template_directory_uri() . '/dist/app.js', ['jquery'], '1.0.0', true);
+    wp_enqueue_script('app');
 }
+
 add_action('wp_enqueue_scripts', 'earthbnb_script_enqueue');
 
 add_action('after_setup_theme', 'earthbnb_theme_setup');
@@ -15,13 +22,6 @@ function earthbnb_theme_setup()
     register_nav_menu('header', 'Header navigation');
     register_nav_menu('footer', 'Footer navigation');
 }
-
-// add_action('wp_enqueue_scripts', 'wpheticBootstrap');
-// function wpheticBootstrap()
-// {
-//     wp_enqueue_style('bootstrap_css', 'https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css');
-//     wp_enqueue_script("bootstrap_js", "https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js", [], false, true);
-// }
 
 #login management
 function wpdocs_my_login_redirect( $url, $request, $user ) {
@@ -104,23 +104,23 @@ add_action('init', 'register_my_cpt_ad');
 #Add taxonomies
 add_action('init', 'add_taxonomies');
 function add_taxonomies(){
-    #distance taxonomy
-    $labels_distance = array(
-        'name' => __('Distances', 'taxonomy general name'),
-        'singular_name' =>__('Distance', 'taxonomy singular name'),
-        'search_items' => __('Chercher une distance'),
-        'all_items' => __('Toutes les distances'),
-        'edit_item' => __('Mettre à jour la distance'),
-        'update_item' => __('Mettre à jour la distance'),
+    #landscape taxonomy
+    $labels_landscape = array(
+        'name' => __('Paysages', 'taxonomy general name'),
+        'singular_name' =>__('Paysage', 'taxonomy singular name'),
+        'search_items' => __('Chercher un paysage'),
+        'all_items' => __('Tous les paysages'),
+        'edit_item' => __('Mettre à jour le paysahe'),
+        'update_item' => __('Mettre à jour le paysage'),
         'add_new_item' => __('Ajouter'),
         'new_item_name' => __('Ajouter'),
         'separate_items_with_commas' => __('Séparer les valeurs par une virgule'),
-        'menu_name' => __('Distance'),
+        'menu_name' => __('Paysage'),
     );
 
-    $args_distance = array(
+    $args_landscape = array(
         'hierarchical' => true,
-        'labels' =>  $labels_distance,
+        'labels' =>  $labels_landscape,
         'public' => true,
         'show_ui' => true,
         'show_in_rest' => true,
@@ -128,7 +128,7 @@ function add_taxonomies(){
         'query_var' => true,
     );
 
-    register_taxonomy('distance','ads', $args_distance);
+    register_taxonomy('landscape','ads', $args_landscape);
 
     #weather taxonomy
     $labels_weather = array(
@@ -156,23 +156,23 @@ function add_taxonomies(){
 
     register_taxonomy('weather','ads', $args_weather);
 
-    #price taxonomy
-    $labels_price = array(
-        'name' => __('Prix', 'taxonomy general name'),
-        'singular_name' =>__('Prix', 'taxonomy singular name'),
-        'search_items' => __('Chercher un prix'),
-        'all_items' => __('Tous les prix'),
-        'edit_item' => __('Mettre à jour le prix'),
-        'update_item' => __('Mettre à jour le prix'),
+    #activity taxonomy
+    $labels_activity = array(
+        'name' => __('Activités', 'taxonomy general name'),
+        'singular_name' =>__('Activité', 'taxonomy singular name'),
+        'search_items' => __('Chercher une activité'),
+        'all_items' => __('Tous les activités'),
+        'edit_item' => __('Mettre à jour activité'),
+        'update_item' => __('Mettre à jour activité'),
         'add_new_item' => __('Ajouter'),
         'new_item_name' => __('Ajouter'),
         'separate_items_with_commas' => __('Séparer les valeurs par une virgule'),
-        'menu_name' => __('Prix'),
+        'menu_name' => __('Activité'),
     );
 
-    $args_price = array(
+    $args_activity = array(
         'hierarchical' => true,
-        'labels' =>  $labels_price,
+        'labels' =>  $labels_activity,
         'public' => true,
         'show_ui' => true,
         'show_in_rest' => true,
@@ -180,7 +180,7 @@ function add_taxonomies(){
         'query_var' => true,
     );
 
-    register_taxonomy('price','ads', $args_price);
+    register_taxonomy('price','ads', $args_activity);
 }
 
 #profile management
@@ -200,3 +200,64 @@ add_action('switch_theme', function (){
     $admin->remove_cap('manage_ads');
     remove_role('ad_manager');
 });
+
+#display last 3 adds
+function wp_last_adds() {
+    $args = array(
+        'posts_per_page' => '3',
+        'post_type' => 'ads',
+        'post_status' => 'publish',
+        'orderby' => 'date',
+    );
+
+    $query = new WP_Query($args);
+    while($query -> have_posts()) :
+        $query->the_post();
+        echo '<li><a href="'.get_the_permalink().'" rel="bookmark">'.get_the_title().'</a></li>';
+        echo get_the_excerpt();
+        echo '<br><a href="'.get_permalink().'">Détails </a><br><br>';
+    endwhile;
+    wp_reset_postdata();
+};
+
+#display all adds
+function wpheticPaginate() {
+    $pages = paginate_links(['type' => 'array']);
+    if (!$pages) {
+        return null;
+    }
+
+    ob_start();
+    echo '<nav aria-label="Page navigation example">';
+    echo '<ul class="pagination">';
+
+    foreach ($pages as $page) {
+        $active = strpos($page, 'current');
+        $liClass = $active ? 'page-item active' : 'page-item';
+        $page = str_replace('page-numbers', 'page-link', $page);
+
+        echo sprintf('<li class="%s">%s</li>', $liClass, $page);
+    }
+    echo '</ul></nav>';
+
+    return ob_get_clean();
+};
+
+function wp_adds() {
+    $args = array(
+        'posts_per_page' => '9',
+        'post_type' => 'ads',
+        'post_status' => 'publish',
+        'orderby' => 'date',
+    );
+
+    $query = new WP_Query($args);
+    while($query -> have_posts()) :
+        $query->the_post();
+        echo '<li><a href="'.get_the_permalink().'" rel="bookmark">'.get_the_title().'</a></li>';
+        echo get_the_excerpt();
+        echo '<br><a href="'.get_permalink().'">Détails </a><br><br>';
+    endwhile;
+    wpheticPaginate();
+    wp_reset_postdata();
+};
