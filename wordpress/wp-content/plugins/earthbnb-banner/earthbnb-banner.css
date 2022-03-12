@@ -1,0 +1,29 @@
+.earthbnb-banner {
+  width: 100%;
+  text-align: center;
+  z-index: 99999;
+  position: sticky;
+  top: 32px;
+  display: block;
+  background-color: purple;
+}
+
+.earthbnb-banner .earthbnb-banner-text {
+  font-weight: 700;
+  padding: 10px 20px;
+}
+
+.earthbnb-banner .earthbnb-banner-button {
+  border: none;
+  background-color: transparent;
+  padding: 0 5px;
+  margin: 0 10px;
+  text-align: center;
+  text-decoration: none;
+  position: absolute;
+  transform: translate(0%, -50%);
+  right: 0;
+  top: 50%;
+  font-size: 16px;
+  cursor: pointer;
+}
