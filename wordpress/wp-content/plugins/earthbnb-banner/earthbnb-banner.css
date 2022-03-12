@@ -2,7 +2,8 @@
   width: 100%;
   text-align: center;
   z-index: 99999;
-  position: relative;
+  position: sticky;
+  top: 32px;
   display: block;
   background-color: purple;
 }
