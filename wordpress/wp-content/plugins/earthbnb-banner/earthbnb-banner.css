@@ -1,4 +1,4 @@
-.simple-banner {
+.earthbnb-banner {
   width: 100%;
   text-align: center;
   z-index: 99999;
@@ -7,12 +7,12 @@
   background-color: purple;
 }
 
-.simple-banner .simple-banner-text {
+.earthbnb-banner .earthbnb-banner-text {
   font-weight: 700;
   padding: 10px 20px;
 }
 
-.simple-banner .simple-banner-button {
+.earthbnb-banner .earthbnb-banner-button {
   border: none;
   background-color: transparent;
   padding: 0 5px;
