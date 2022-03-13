@@ -77,7 +77,7 @@ function register_my_cpt_ad()
         "hierarchical" => false,
         "rewrite" => ["slug" => "ad", "with_front" => true],
         "query_var" => true,
-        "supports" => ["title", "editor", "excerpt", "thumbnail", "author", "custom-fields"],
+        "supports" => ["title", "editor", "excerpt","comments", "thumbnail", "author", "custom-fields"],
         "show_in_graphql" => false,
     ];
 
@@ -269,4 +269,9 @@ function wp_adds() {
 
 function wp_categories(){
 
-}
+}; 
+function wpb_comment_reply_text( $link ) {
+    $link = str_replace( 'Répondre', '', $link );
+    return $link;
+    }
+    add_filter( 'comment_reply_link', 'wpb_comment_reply_text' );
