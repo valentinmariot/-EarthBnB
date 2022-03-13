@@ -280,7 +280,7 @@ function post_new_ad(){
     'post_type' => $_POST['post_type'],
     'meta_input' => array(
         'ad_price' => $_POST['ad_price'],
-        'ad_localisation' => $_POST['ad_localisation'],
+        'ad_surface' => $_POST['ad_surface'],
         'ad_distance' => $_POST['ad_distance'],
     )
     );
