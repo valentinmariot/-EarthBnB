@@ -270,3 +270,27 @@ function wp_adds() {
 function wp_categories(){
 
 }
+
+function post_new_ad(){    
+    // create post object with the form values
+    $new_ad = array(
+    'post_title'    => $_POST['planet_name'],
+    'post_content' => $_POST['description'],
+    'post_status'   => 'private',
+    'post_type' => $_POST['post_type'],
+    'meta_input' => array(
+        'ad_price' => $_POST['ad_price'],
+        'ad_localisation' => $_POST['ad_localisation'],
+        'ad_distance' => $_POST['ad_distance'],
+    )
+    );
+    // insert the post into the database
+    $add_id = wp_insert_post( $new_ad);
+    if ( $add_id ) {
+        wp_redirect( "localhost:5555" ); //TODO
+        exit;
+    }
+}
+post_new_ad();
+
+
