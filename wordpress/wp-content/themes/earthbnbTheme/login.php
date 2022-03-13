@@ -1,10 +1,17 @@
 <?php
-get_header();
+/**
+ * Template Name: login
+ */
 
-echo wp_login_form();
+if (is_user_logged_in()) {
+    ob_start();
+    nocache_headers();
+    $url = home_url("/mon-compte/");
+    wp_redirect($url);
+    exit;
+}else{
+    get_header();
+    echo wp_login_form();
+};
 
 get_footer();
-
-
-#rediriger depuis le menu vers la page login.php qui a le formulaire
-#ou faire en js comme dans le cours
