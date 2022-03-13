@@ -25,18 +25,24 @@ POUR LES FILTRES MAIS PAS DU TOUT FONCTIONNEL
  -->
 
 <?php if (have_posts()) : ?>
-    <div>
+    <div class="ad__cards">
         <?php while (have_posts()): ?>
             <?php the_post(); ?>
-            <div>
+            <div class="ad__card">
+                <div class="ad__card-img">
                 <?php the_post_thumbnail(); ?>
-                <li><a href="<?php get_the_permalink(); ?>" rel="bookmark"> <?= get_the_title() ; ?></a></li>
-                <p>Prix : <?= get_post_meta(get_the_ID(), 'ad_price', true); ?>€</p>
+                </div>
+                <li><a class="ad__card-link" href="<?php get_the_permalink(); ?>" rel="bookmark"> <?= get_the_title() ; ?></a></li>
+                <p>Prix : <?= get_post_meta(get_the_ID(), 'ad_price', true); ?>€ /sem</p>
                 <p>Distance : <?= get_post_meta(get_the_ID(), 'ad_localisation', true); ?> parsecs</p>
-                <?= get_the_excerpt(); ?>
-                <br><a href="<?php get_permalink(); ?>">Détails </a><br><br>
+                <div class="ad__card-content">
+                    <?= get_the_excerpt(); ?>
+                </div>
+                <br><div class="ad__card-details"><a href="<?php get_permalink(); ?>">Détails </a></div><br>
             </div>
         <?php endwhile; ?>
+    </div>
+    <div class="pagination__container">
         <?= wpheticPaginate(); ?>
     </div>
 <?php endif;?>
