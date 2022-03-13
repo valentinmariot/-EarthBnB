@@ -2,113 +2,15 @@
     display: flex;
     justify-content: center;
     align-items: center;
-}
+    border: 1px solid $purplerain;
 
-
-.home-last {
-
-    &__row {
-        margin: 0 -5px;
+    &__containers {
+        border: 1px solid rgb(83, 0, 128);
+        border-radius: 4px;
         
-        &::after {
-            content: "";
-            display: table;
-            clear: both;
-        }
-    }
-
-    &__column {
-        float: left;
-        padding: 0 10px;
-
-        @media screen and (max-width: 768px) {
-            width: 100%;
-            display: block;
-            margin-bottom: 20px;
-        }
-    }
-
-    &__container-title {
-        display: flex;
-        align-items: center;
-        margin: 2% 5%;
-    }
-
-    &__container-card {
-        display: flex;
-        margin: 5%;
-        @media screen and (max-width: 600px) {
-            width: 100%;
-            display: block;
-            margin-bottom: 20px;
-        }
-    }
-
-    &__card {
-        box-shadow: $shadow;
-        border-radius: 15px;
-        padding: 50px;
-        & > li {
-            list-style-type: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-top: 20px;
-        }
-        & > p {
-            display: flex;
-            justify-content: end;
-        }
-    }
-
-    &__img {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        & > img {
-            height: 250px;
-            width: 250px;
-            object-fit: cover;
+        &__container {
+            border: 1px solid green;
             border-radius: 4px;
-            box-shadow: $shadow;
-        }
-    }
-
-    &__link {
-        text-decoration: none;
-        color: $purplerain;
-        font-size: 25px;
-        cursor: pointer;
-        transition: transform .7s;
-        &:hover {
-            color: $black;
-            text-decoration: underline $purplerain;
-        }
-    }
-
-    &__details {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        & > a {
-            background: $purplerain;
-            border-radius: 50px;
-            color: $white;
-            cursor: pointer;
-            padding: 5px 30px;
-            margin-top: 20px;
-            position: absolute;
-            text-decoration: none;
-            transition: .5s;
-            margin-top: 20px;
-            box-shadow: $shadow;
-            &:hover {
-                background-color: $white;
-                color: $purplerain;
-                border: 2px solid $purplerain;
-                border-radius: 50px;
-            }
         }
     }
 }
