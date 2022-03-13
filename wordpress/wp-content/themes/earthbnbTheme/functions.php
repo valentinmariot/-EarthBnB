@@ -213,7 +213,9 @@ function wp_last_adds() {
     $query = new WP_Query($args);
     while($query -> have_posts()) :
         $query->the_post();
+        the_post_thumbnail();
         echo '<li><a href="'.get_the_permalink().'" rel="bookmark">'.get_the_title().'</a></li>';
+        echo '<p>Prix : '.get_post_meta(get_the_ID(), 'ad_price', true).'€</p>';
         echo get_the_excerpt();
         echo '<br><a href="'.get_permalink().'">Détails </a><br><br>';
     endwhile;
@@ -254,10 +256,17 @@ function wp_adds() {
     $query = new WP_Query($args);
     while($query -> have_posts()) :
         $query->the_post();
+        the_post_thumbnail();
         echo '<li><a href="'.get_the_permalink().'" rel="bookmark">'.get_the_title().'</a></li>';
+        echo '<p>Prix : '.get_post_meta(get_the_ID(), 'ad_price', true).'€</p>';
+        echo '<p>Distance : '.get_post_meta(get_the_ID(), 'ad_localisation', true).' parsecs</p>';
         echo get_the_excerpt();
         echo '<br><a href="'.get_permalink().'">Détails </a><br><br>';
     endwhile;
     wpheticPaginate();
     wp_reset_postdata();
 };
+
+function wp_categories(){
+
+}
