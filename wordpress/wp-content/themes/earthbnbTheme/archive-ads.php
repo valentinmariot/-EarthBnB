@@ -41,9 +41,9 @@ POUR LES FILTRES MAIS PAS DU TOUT FONCTIONNEL
                 <br><div class="ad__card-details"><a href="<?php get_permalink(); ?>">Détails </a></div><br>
             </div>
         <?php endwhile; ?>
-        <div class="paginate__content">
-            <?= wpheticPaginate(); ?>
-        </div>
+    </div>
+    <div class="pagination__container">
+        <?= wpheticPaginate(); ?>
     </div>
 <?php endif;?>
 

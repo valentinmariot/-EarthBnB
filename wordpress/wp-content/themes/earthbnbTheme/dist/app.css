@@ -11735,6 +11735,25 @@ textarea.form-control-lg {
   color: #940082;
 }
 
+.pagination__container {
+  width: 100%;
+}
+.pagination__container .pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  list-style: none;
+  color: #940082;
+}
+.pagination__container .page-item.active .page-link {
+  color: #ffffff;
+  background-color: #940082;
+  border-color: #940082;
+}
+.pagination__container .page-link {
+  color: #940082;
+}
+
 .home-menu-class {
   display: flex;
   justify-content: space-between;

@@ -86,3 +86,24 @@
         }
     }
 }
+
+.pagination__container {
+    width: 100%;
+
+    .pagination {
+        display: flex;
+    align-items: center;
+    justify-content: center;
+    list-style: none;
+    color: $purplerain;
+    }
+
+    .page-item.active .page-link {
+        color: $white;
+        background-color: $purplerain;
+        border-color: $purplerain;
+    }    
+    .page-link {
+        color: $purplerain;
+    }
+}
