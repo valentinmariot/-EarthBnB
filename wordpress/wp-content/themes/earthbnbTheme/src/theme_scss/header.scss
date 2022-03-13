@@ -1,0 +1,20 @@
+.home-menu-class {
+    align-items: center;
+    background: $black;
+    color: $white;
+    display: flex;
+    justify-content: space-between;
+}
+
+.menu {
+
+    &-item {
+        display: contents;
+        margin: 5%;
+
+        & > a {
+            float: right;
+            text-decoration: none;
+        }
+    }
+}

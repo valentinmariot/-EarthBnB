@@ -27,6 +27,13 @@ Version: 1.0.0
 @import './theme_scss/planet-list.scss';
 
 
+/* Fonts */
+@font-face {
+    font-family: medium;
+    src: url("../assets/fonts/medium.otf") format("opentype");
+}
+
+
 /*** RESET CSS ***/
 * {
     margin: 0;

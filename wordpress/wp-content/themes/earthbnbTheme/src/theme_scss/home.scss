@@ -10,10 +10,9 @@
     &__bg {
         align-items: center;
         display: flex;
-        height: 90%;
+        height: 700px;
         filter: contrast(1.2) saturate(0.8) grayscale(0.31);
         justify-content: center;
-        margin: 15%;
         @media screen and (max-width: 480px) {
             display: none;
         }

@@ -11646,6 +11646,23 @@ textarea.form-control-lg {
 /* Buttons */
 /* Font */
 /* Import Theme */
+.home-menu-class {
+  align-items: center;
+  background: #000000;
+  color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+}
+
+.menu-item {
+  display: contents;
+  margin: 5%;
+}
+.menu-item > a {
+  float: right;
+  text-decoration: none;
+}
+
 .home-search {
   align-items: center;
   background-color: #000000;
@@ -11658,10 +11675,9 @@ textarea.form-control-lg {
 .home-search__bg {
   align-items: center;
   display: flex;
-  height: 90%;
+  height: 700px;
   filter: contrast(1.2) saturate(0.8) grayscale(0.31);
   justify-content: center;
-  margin: 15%;
 }
 @media screen and (max-width: 480px) {
   .home-search__bg {
@@ -11776,6 +11792,11 @@ textarea.form-control-lg {
   color: #ffffff;
 }
 
+/* Fonts */
+@font-face {
+  font-family: medium;
+  src: url(/fonts/medium.otf?30feb72ef5ac75accb9f1a393addfd9e) format("opentype");
+}
 /*** RESET CSS ***/
 * {
   margin: 0;
