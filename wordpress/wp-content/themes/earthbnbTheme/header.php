@@ -16,5 +16,8 @@
     <body>
 
         <header <?php body_class($ebnbClass); ?>>
+            <div class="logo">
+                <a class="logo-title" href="http://localhost:5555">Earthbnb</a>
+            </div>
             <?php wp_nav_menu(array('theme_location'=>'header')); ?>
         </header>
