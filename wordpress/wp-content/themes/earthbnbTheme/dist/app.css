@@ -12116,6 +12116,163 @@ textarea.form-control-lg {
   color: #940082;
 }
 
+.form_title {
+  margin-left: auto;
+  margin-right: auto;
+  width: 800px;
+  text-align: center;
+  margin-top: 60px;
+  margin-bottom: 65px;
+  font-size: 46px;
+  background: linear-gradient(90deg, #5A156E 0%, #730D75 54.03%, #940080 100%);
+  -webkit-background-clip: text;
+          background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+#loginform {
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 60px;
+  width: 800px;
+  text-align: center;
+}
+#loginform input {
+  border-radius: 10px;
+}
+#loginform p label {
+  font-size: 18px;
+  display: block;
+  white-space: nowrap;
+  margin-bottom: 1rem;
+}
+#loginform p #user_login,
+#loginform p #user_pass {
+  width: 320px;
+  height: 40px;
+}
+#loginform p #wp-submit {
+  margin-top: 45px;
+  font-size: 18px;
+  width: 165px;
+  height: 47px;
+  border: none;
+  background: linear-gradient(90deg, #5A156E 0%, #730D75 54.03%, #940080 100%);
+  color: #ffffff;
+}
+#loginform .login-remember {
+  margin-top: 40px;
+}
+
+@media (min-width: 390px) and (max-width: 767px) {
+  .form_title {
+    font-size: 22px;
+    width: 350px;
+    margin-bottom: 45px;
+  }
+
+  #loginform {
+    width: 350px;
+  }
+  #loginform p label {
+    font-size: 12px;
+  }
+  #loginform p #user_login,
+#loginform p #user_pass {
+    width: 230px;
+    height: 30px;
+  }
+  #loginform p #wp-submit {
+    margin-top: 35px;
+    font-size: 12px;
+    width: 125px;
+    height: 35px;
+  }
+}
+@media (min-width: 768px) and (max-width: 979px) {
+  .form_title {
+    font-size: 32px;
+    margin-bottom: 55px;
+  }
+
+  #loginform p label {
+    font-size: 16px;
+  }
+  #loginform p #user_login,
+#loginform p #user_pass {
+    width: 270px;
+    height: 35px;
+  }
+  #loginform p #wp-submit {
+    margin-top: 40px;
+    font-size: 16px;
+    width: 135px;
+    height: 40px;
+  }
+}
+#registerform {
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 60px;
+  width: 800px;
+  text-align: center;
+}
+#registerform input {
+  border-radius: 10px;
+}
+#registerform p label {
+  margin-bottom: 1rem;
+  font-size: 18px;
+  display: block;
+  white-space: nowrap;
+}
+#registerform p .text {
+  width: 320px;
+  height: 40px;
+}
+#registerform p #wp-registration {
+  margin-top: 45px;
+  font-size: 18px;
+  width: 205px;
+  height: 47px;
+  border: none;
+  background: linear-gradient(90deg, #5A156E 0%, #730D75 54.03%, #940080 100%);
+  color: #ffffff;
+}
+
+@media (min-width: 390px) and (max-width: 767px) {
+  #registerform {
+    width: 350px;
+  }
+  #registerform p label {
+    font-size: 12px;
+  }
+  #registerform p .text {
+    width: 230px;
+    height: 30px;
+  }
+  #registerform p #wp-registration {
+    margin-top: 35px;
+    font-size: 12px;
+    width: 125px;
+    height: 35px;
+  }
+}
+@media (min-width: 768px) and (max-width: 979px) {
+  #registerform p label {
+    font-size: 16px;
+  }
+  #registerform p .text {
+    width: 270px;
+    height: 35px;
+  }
+  #registerform p #wp-registration {
+    margin-top: 40px;
+    font-size: 16px;
+    width: 135px;
+    height: 40px;
+  }
+}
 /* Fonts */
 @font-face {
   font-family: medium;

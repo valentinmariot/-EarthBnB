@@ -21,13 +21,13 @@
                 <div class="ad__card-img">
                 <?php the_post_thumbnail(); ?>
                 </div>
-                <li><a class="ad__card-link" href="<?php get_the_permalink(); ?>" rel="bookmark"> <?= get_the_title() ; ?></a></li>
+                <li><a class="ad__card-link" href="<?php echo get_the_permalink(); ?>" rel="bookmark"> <?= get_the_title() ; ?></a></li>
                 <p>Prix : <?= get_post_meta(get_the_ID(), 'ad_price', true); ?>€ /sem</p>
                 <p>Distance : <?= get_post_meta(get_the_ID(), 'ad_localisation', true); ?> parsecs</p>
                 <div class="ad__card-content">
                     <?= get_the_excerpt(); ?>
                 </div>
-                <br><div class="ad__card-details"><a href="<?php get_permalink(); ?>">Détails </a></div><br>
+                <br><div class="ad__card-details"><a href="<?php echo get_permalink(); ?>">Détails </a></div><br>
             </div>
         <?php endwhile; ?>
     </div>
