@@ -5,6 +5,25 @@
 ?>
 
 <?php get_header(); ?>
+    <span>Distance</span>
+    <ul>
+        <li><a href="#">+ de 20 parsecs</a></li>
+        <li><a href="#">- de 20 parsecs</a></li>
+    </ul>
+    <span>Météo</span>
+    <ul>
+        <li><a href="#">+ de 20 parsecs</a></li>
+        <li><a href="#">- de 20 parsecs</a></li>
+    </ul>
+    <span>Prix</span>
+    <ul>
+        <li><a href="#">- de 100 euros</a></li>
+        <li><a href="#">- de 50 euros</a></li>
+    </ul>
+
+<?php
+    echo wp_list_categories();
+?>
 
 <?php wp_adds(); ?>
 
