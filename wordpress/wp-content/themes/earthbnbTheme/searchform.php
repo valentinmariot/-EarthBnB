@@ -8,7 +8,7 @@
                     <button class="home-search__btn fa-solid fa-magnifying-glass" type="submit"></button>
                 </form>
                 <div class="home-search__container-link">
-                    <a class="home-search__link"ref="/liste-annonces/">Je suis flexible</a>
+                    <a class="home-search__link" href="/liste-annonces/">Je suis flexible</a>
                 </div>
             </div>
         </div>
