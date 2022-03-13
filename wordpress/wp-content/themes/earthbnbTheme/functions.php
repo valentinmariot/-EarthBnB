@@ -272,7 +272,7 @@ function wp_categories(){
 }
 
 function post_new_ad(){    
-    // create post object with the form values
+    // create post object with the form values from planet-add.php
     $new_ad = array(
     'post_title'    => $_POST['planet_name'],
     'post_content' => $_POST['description'],
