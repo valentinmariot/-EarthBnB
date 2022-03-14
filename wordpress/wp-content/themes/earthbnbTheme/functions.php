@@ -236,7 +236,7 @@ function wp_last_adds() {
 function wp_user_ads($user_id) {
     $args = array(
         'post_type' => 'ads',
-        'post_status' => 'publish',
+        'post_status' => 'publish, pending',
         'orderby' => 'date',
         "author" => $user_id
     );
@@ -254,7 +254,8 @@ function wp_user_ads($user_id) {
             'ID' => $post_id,
             'post_status'   => 'draft',
         );
-        echo '<a href="'. wp_update_post( $my_post ).'">Archiver</button><br>';
+        # commenter car archive tous les posts sur la page même si on ne clique pas sur le bouton
+        #echo '<a href="'. wp_update_post( $my_post ).'">Archiver</button><br>';
     endwhile;
     wp_reset_postdata();
 };
