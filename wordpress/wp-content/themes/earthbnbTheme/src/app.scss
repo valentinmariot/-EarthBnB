@@ -23,14 +23,15 @@ Version: 1.0.0
 @import './theme_scss/footer.scss';
 @import './theme_scss/header.scss';
 @import './theme_scss/home.scss';
+@import './theme_scss/login.scss';
 @import './theme_scss/planet-add.scss';
 @import './theme_scss/planet-description.scss';
 @import './theme_scss/planet-list.scss';
-@import './theme_scss/login.scss';
 @import './theme_scss/register.scss';
+@import './theme_scss/single-ads.scss';
 
 
-/* Fonts */
+/* Fonts */ 
 @font-face {
     font-family: medium;
     src: url("../assets/fonts/medium.otf") format("opentype");
