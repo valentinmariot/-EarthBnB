@@ -542,7 +542,8 @@ CREATE TABLE `wp_posts` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Déchargement des données de la table `wp_posts`
+-- 
+
 --
 
 INSERT INTO `wp_posts` (`ID`, `post_author`, `post_date`, `post_date_gmt`, `post_content`, `post_title`, `post_excerpt`, `post_status`, `comment_status`, `ping_status`, `post_password`, `post_name`, `to_ping`, `pinged`, `post_modified`, `post_modified_gmt`, `post_content_filtered`, `post_parent`, `guid`, `menu_order`, `post_type`, `post_mime_type`, `comment_count`) VALUES
@@ -630,6 +631,9 @@ INSERT INTO `wp_posts` (`ID`, `post_author`, `post_date`, `post_date_gmt`, `post
 (98, 1, '2022-03-11 16:45:51', '2022-03-11 15:45:51', '', 'Annonce', '', 'publish', 'closed', 'closed', '', 'annonce', '', '', '2022-03-13 15:08:14', '2022-03-13 14:08:14', '', 0, 'http://localhost:5555/?page_id=98', 0, 'page', '', 0),
 (99, 1, '2022-03-11 16:45:51', '2022-03-11 15:45:51', '', 'Annonce', '', 'inherit', 'closed', 'closed', '', '98-revision-v1', '', '', '2022-03-11 16:45:51', '2022-03-11 15:45:51', '', 98, 'http://localhost:5555/?p=99', 0, 'revision', '', 0),
 (100, 1, '2022-03-11 16:48:13', '2022-03-11 15:48:13', '<!-- wp:paragraph -->\n<p>Ceci est une page d’exemple. C’est différent d’un article de blog parce qu’elle restera au même endroit et apparaîtra dans la navigation de votre site (dans la plupart des thèmes). La plupart des gens commencent par une page «&nbsp;À propos&nbsp;» qui les présente aux personnes visitant le site. Cela pourrait ressembler à quelque chose comme cela&nbsp;:</p>\n<!-- /wp:paragraph -->\n\n<!-- wp:quote -->\n<blockquote class=\"wp-block-quote\"><p>Bonjour&nbsp;! Je suis un mécanicien qui aspire à devenir acteur, et voici mon site. J’habite à Bordeaux, j’ai un super chien baptisé Russell, et j’aime la vodka (ainsi qu’être surpris par la pluie soudaine lors de longues balades sur la plage au coucher du soleil).</p></blockquote>\n<!-- /wp:quote -->\n\n<!-- wp:paragraph -->\n<p>…ou quelque chose comme cela&nbsp;:</p>\n<!-- /wp:paragraph -->\n\n<!-- wp:quote -->\n<blockquote class=\"wp-block-quote\"><p>La société 123 Machin Truc a été créée en 1971, et n’a cessé de proposer au public des machins-trucs de qualité depuis lors. Située à Saint-Remy-en-Bouzemont-Saint-Genest-et-Isson, 123 Machin Truc emploie 2 000 personnes, et fabrique toutes sortes de bidules supers pour la communauté bouzemontoise.</p></blockquote>\n<!-- /wp:quote -->\n\n<!-- wp:paragraph -->\n<p>En tant que nouvel utilisateur ou utilisatrice de WordPress, vous devriez vous rendre sur <a href=\"http://localhost:5555/wp-admin/\">votre tableau de bord</a> pour supprimer cette page et créer de nouvelles pages pour votre contenu. Amusez-vous bien&nbsp;!</p>\n<!-- /wp:paragraph -->', 'Page d’exemple', '', 'inherit', 'closed', 'closed', '', '2-revision-v1', '', '', '2022-03-11 16:48:13', '2022-03-11 15:48:13', '', 2, 'http://localhost:5555/?p=100', 0, 'revision', '', 0);
+(101, 1, '2022-03-13 19:19:24', '2022-03-13 18:19:24', '', 'Mon compte', '', 'publish', 'closed', 'closed', '', 'mon-compte', '', '', '2022-03-13 19:19:25', '2022-03-13 18:19:25', '', 0, 'http://localhost:5555/?page_id=101', 0, 'page', '', 0),
+(102, 1, '2022-03-13 23:34:53', '2022-03-13 22:34:53', '', 'Créer son annonce', '', 'publish', 'closed', 'closed', '', 'creer-son-annonce', '', '', '2022-03-13 23:34:54', '2022-03-13 22:34:54', '', 0, 'http://localhost:5555/?page_id=102', 0, 'page', '', 0),
+(103, 1, '2022-03-14 12:45:29', '2022-03-14 11:45:29', '', 'Filter price', '', 'publish', 'closed', 'closed', '', 'filter-price', '', '', '2022-03-14 12:45:29', '2022-03-14 11:45:29', '', 0, 'http://localhost:5555/?page_id=103', 0, 'page', '', 0); 
 
 -- --------------------------------------------------------
 
