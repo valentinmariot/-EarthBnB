@@ -298,7 +298,7 @@ function post_new_ad(){
     $new_ad = array(
     'post_title'    => $_POST['planet_name'],
     'post_content' => $_POST['description'],
-    'post_status'   => 'private',
+    'post_status'   => 'pending',
     'post_type' => $_POST['post_type'],
     'meta_input' => array(
         'ad_price' => $_POST['ad_price'],
