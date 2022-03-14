@@ -12100,6 +12100,51 @@ textarea.form-control-lg {
   background-color: #ffffff;
 }
 .planet-add__btn {
+.single-ad__container-head {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 40px;
+}
+.single-ad__container-head-left {
+  margin: 20px;
+}
+.single-ad__container-head-left-title > h2, .single-ad__container-head-left-title > .h2 {
+  font-size: 70px;
+  font-weight: bold;
+  background: linear-gradient(90deg, #5A156E 0%, #730D75 54.03%, #940080 100%);
+  -webkit-background-clip: text;
+          background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.single-ad__container-head-thumbnail > img {
+  border-radius: 4px;
+  box-shadow: 0px 1px 30px rgba(0, 0, 0, 0.15);
+  height: 250px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 250px;
+}
+.single-ad__container-content {
+  box-shadow: 0px 1px 30px rgba(0, 0, 0, 0.15);
+  border-radius: 15px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 5%;
+  flex-direction: column;
+}
+.single-ad__container-content > p {
+  display: inline-block;
+}
+.single-ad__container-content-informations {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
+.single-ad__container-location > a {
   background: #940082;
   border-radius: 50px;
   box-shadow: 0px 1px 30px rgba(0, 0, 0, 0.15);
@@ -12112,6 +12157,9 @@ textarea.form-control-lg {
 }
 .planet-add__btn:hover {
   background-color: #ffffff;
+.single-ad__container-location > a:hover {
+  background-color: #ffffff;
+  border: 2px solid #940082;
   border-radius: 50px;
   color: #940082;
 }

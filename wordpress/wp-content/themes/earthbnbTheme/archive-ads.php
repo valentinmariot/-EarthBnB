@@ -22,7 +22,7 @@
                 <?php the_post_thumbnail(); ?>
                 </div>
                 <li><a class="ad__card-link" href="<?php echo get_the_permalink(); ?>" rel="bookmark"> <?= get_the_title() ; ?></a></li>
-                <p>Prix : <?= get_post_meta(get_the_ID(), 'ad_price', true); ?>€ /sem</p>
+                <p>Prix : <?= get_post_meta(get_the_ID(), 'ad_price', true); ?>€ /jour</p>
                 <p>Distance : <?= get_post_meta(get_the_ID(), 'ad_localisation', true); ?> parsecs</p>
                 <div class="ad__card-content">
                     <?= get_the_excerpt(); ?>
