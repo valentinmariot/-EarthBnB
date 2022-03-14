@@ -278,7 +278,7 @@ function wp_ad_filter_price($price) {
         the_post_thumbnail();
         echo '</div>';
         echo '<li><a class="ad__card-link" href="'.get_the_permalink().'" rel="bookmark">'.get_the_title().'</a></li>';
-        echo '<p>Prix :'.get_post_meta(get_the_ID(), 'ad_price', true).'€ /sem</p>';
+        echo '<p><i class="fa-solid fa-money-bill"></i> Prix :'.get_post_meta(get_the_ID(), 'ad_price', true).'€ /sem</p>';
         echo '<p>Distance :'.get_post_meta(get_the_ID(), 'ad_localisation', true). 'parsecs</p>';
         echo '<div class="ad__card-content">';
         echo get_the_excerpt();
