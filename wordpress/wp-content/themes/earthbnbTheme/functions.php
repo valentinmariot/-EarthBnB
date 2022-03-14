@@ -260,6 +260,37 @@ function wp_user_ads($user_id) {
     wp_reset_postdata();
 };
 
+#filter add price
+function wp_ad_filter_price($price) {
+    $args = array(
+        'meta_key'     => 'ad_price',
+        'meta_value'   => $price,
+        'meta_compare' => '<=',
+        'post_type'    => 'ads'
+    );
+
+    $query = new WP_Query($args);
+    echo '<div class="ad__cards">';
+    while($query -> have_posts()) :
+        $query->the_post();
+        echo '<div class="ad__card">';
+        echo '<div class="ad__card-img">';
+        the_post_thumbnail();
+        echo '</div>';
+        echo '<li><a class="ad__card-link" href="'.get_the_permalink().'" rel="bookmark">'.get_the_title().'</a></li>';
+        echo '<p>Prix :'.get_post_meta(get_the_ID(), 'ad_price', true).'€ /sem</p>';
+        echo '<p>Distance :'.get_post_meta(get_the_ID(), 'ad_localisation', true). 'parsecs</p>';
+        echo '<div class="ad__card-content">';
+        echo get_the_excerpt();
+        echo '</div>';
+        echo '<br><div class="ad__card-details"><a href="'.get_permalink().'">Détails </a></div><br>';
+        echo '</div>';
+    endwhile;
+    echo '</div>';
+    wpheticPaginate();
+    wp_reset_postdata();
+};
+
 #display all adds
 function wpheticPaginate() {
     $pages = paginate_links(['type' => 'array']);
@@ -281,28 +312,6 @@ function wpheticPaginate() {
     echo '</ul></nav>';
 
     return ob_get_clean();
-};
-
-function wp_adds() {
-    $args = array(
-        'posts_per_page' => '9',
-        'post_type' => 'ads',
-        'post_status' => 'publish',
-        'orderby' => 'date',
-    );
-
-    $query = new WP_Query($args);
-    while($query -> have_posts()) :
-        $query->the_post();
-        the_post_thumbnail();
-        echo '<li><a href="'.get_the_permalink().'" rel="bookmark">'.get_the_title().'</a></li>';
-        echo '<p>Prix : '.get_post_meta(get_the_ID(), 'ad_price', true).'€</p>';
-        echo '<p>Distance : '.get_post_meta(get_the_ID(), 'ad_localisation', true).' parsecs</p>';
-        echo get_the_excerpt();
-        echo '<br><a href="'.get_permalink().'">Détails </a><br><br>';
-    endwhile;
-    wpheticPaginate();
-    wp_reset_postdata();
 };
 
 function wp_categories(){
