@@ -232,6 +232,34 @@ function wp_last_adds() {
     wp_reset_postdata();
 };
 
+#display user articles
+function wp_user_ads($user_id) {
+    $args = array(
+        'post_type' => 'ads',
+        'post_status' => 'publish, pending',
+        'orderby' => 'date',
+        "author" => $user_id
+    );
+
+    $query = new WP_Query($args);
+    while($query -> have_posts()) :
+        $query->the_post();
+        echo '<li>'.get_the_title().'</li>';
+        the_post_thumbnail();
+        if(get_post_status == "private"){
+            echo '<br><a href="'.home_url("/creer-son-annonce/").'">Modifier</a><br>';
+        }
+        $post_id= get_the_ID();
+        $my_post = array(
+            'ID' => $post_id,
+            'post_status'   => 'draft',
+        );
+        # commenter car archive tous les posts sur la page même si on ne clique pas sur le bouton
+        #echo '<a href="'. wp_update_post( $my_post ).'">Archiver</button><br>';
+    endwhile;
+    wp_reset_postdata();
+};
+
 #display all adds
 function wpheticPaginate() {
     $pages = paginate_links(['type' => 'array']);
