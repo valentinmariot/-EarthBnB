@@ -300,6 +300,8 @@ function post_new_ad(){
     'post_content' => $_POST['description'],
     'post_status'   => 'pending',
     'post_type' => $_POST['post_type'],
+    'post_author'=> get_current_user_id(),
+    'comment_status' => 'closed',
     'meta_input' => array(
         'ad_price' => $_POST['ad_price'],
         'ad_surface' => $_POST['ad_surface'],
