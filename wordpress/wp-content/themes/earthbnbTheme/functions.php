@@ -220,7 +220,7 @@ function wp_last_adds() {
         the_post_thumbnail();
         echo '</div>';
         echo '<li><a class="home-last__link" href="'.get_the_permalink().'" rel="bookmark">'.get_the_title().'</a></li>';
-        echo '<p class="home-last__price">Prix : '.get_post_meta(get_the_ID(), 'ad_price', true).'€ /sem</p>';
+        echo '<p class="home-last__price">Prix : '.get_post_meta(get_the_ID(), 'ad_price', true).'€ /jour</p>';
         echo get_the_excerpt();
         echo '<div class="home-last__details">';
         echo '<br><a class="home-last__details" href="'.get_permalink().'">Plus de détails </a><br><br>';
@@ -278,7 +278,7 @@ function wp_ad_filter_price($price) {
         the_post_thumbnail();
         echo '</div>';
         echo '<li><a class="ad__card-link" href="'.get_the_permalink().'" rel="bookmark">'.get_the_title().'</a></li>';
-        echo '<p>Prix :'.get_post_meta(get_the_ID(), 'ad_price', true).'€ /sem</p>';
+        echo '<p><i class="fa-solid fa-money-bill"></i> Prix :'.get_post_meta(get_the_ID(), 'ad_price', true).'€ /sem</p>';
         echo '<p>Distance :'.get_post_meta(get_the_ID(), 'ad_localisation', true). 'parsecs</p>';
         echo '<div class="ad__card-content">';
         echo get_the_excerpt();
