@@ -5,24 +5,13 @@
 ?>
 
 <?php get_header(); ?>
-<!--
-POUR LES FILTRES MAIS PAS DU TOUT FONCTIONNEL
-    <span>Distance</span>
-    <ul>
-        <li><a href="#">+ de 20 parsecs</a></li>
-        <li><a href="#">- de 20 parsecs</a></li>
-    </ul>
-    <span>Météo</span>
-    <ul>
-        <li><a href="#">+ de 20 parsecs</a></li>
-        <li><a href="#">- de 20 parsecs</a></li>
-    </ul>
-    <span>Prix</span>
-    <ul>
-        <li><a href="#">- de 100 euros</a></li>
-        <li><a href="#">- de 50 euros</a></li>
-    </ul>
- -->
+
+<form method="get" action="http://localhost:5555/filter-price/">
+    <label>Prix maximum :</label><br>
+    <input type="range" name="price" min="10" max="300" step="10"><br>
+    <label><em>min: 10€ max: 300€</em></label><br>
+    <button type="submit">Valider</button>
+</form>
 
 <?php if (have_posts()) : ?>
     <div class="ad__cards">
