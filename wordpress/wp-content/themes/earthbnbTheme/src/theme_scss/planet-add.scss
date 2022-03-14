@@ -1,0 +1,77 @@
+.planet-add {
+  &__page {
+    background-color: $white;
+    padding: 5%;
+    display: flex;
+    justify-content: center;
+  }
+
+  &__title,
+  &__subtitle,
+  &__label {
+    color: $black;
+  }
+
+  &__page-content-container {
+    width: 80%;
+  }
+
+  &__form {
+    // width: 80%;
+    @media (max-width: 390px) {
+      position: relative;
+      width: 80%;
+    }
+    @media (max-width: 768px) {
+      height: auto;
+      width: auto;
+    }
+  }
+
+  &__field,
+  &__btn {
+    margin-bottom: 1rem;
+  }
+
+  &__field {
+    display: grid;
+    row-gap: 0.5rem;
+    & #cat {
+      background-color: $white;
+      border: 2px solid $purplerain;
+      border-radius: 50px;
+      font-size: 18px;
+      resize: none;
+      width: 30%;
+    }
+  }
+
+  &__input,
+  &__btn {
+    border: 2px solid $purplerain;
+    border-radius: 50px;
+    font-size: 18px;
+    resize: none;
+  }
+
+  & .postform {
+    background-color: $white;
+  }
+
+  &__btn {
+    background: $purplerain;
+    border-radius: 50px;
+    box-shadow: $shadow;
+    color: $white;
+    cursor: pointer;
+    padding: 5px 30px;
+    position: absolute;
+    text-decoration: none;
+    transition: 0.5s;
+    &:hover {
+      background-color: $white;
+      border-radius: 50px;
+      color: $purplerain;
+    }
+  }
+}

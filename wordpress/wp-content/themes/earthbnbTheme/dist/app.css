@@ -12051,6 +12051,71 @@ textarea.form-control-lg {
   border-radius: 50px;
 }
 
+.planet-add__page {
+  background-color: #ffffff;
+  padding: 5%;
+  display: flex;
+  justify-content: center;
+}
+.planet-add__title, .planet-add__subtitle, .planet-add__label {
+  color: #000000;
+}
+.planet-add__page-content-container {
+  width: 80%;
+}
+@media (max-width: 390px) {
+  .planet-add__form {
+    position: relative;
+    width: 80%;
+  }
+}
+@media (max-width: 768px) {
+  .planet-add__form {
+    height: auto;
+    width: auto;
+  }
+}
+.planet-add__field, .planet-add__btn {
+  margin-bottom: 1rem;
+}
+.planet-add__field {
+  display: grid;
+  row-gap: 0.5rem;
+}
+.planet-add__field #cat {
+  background-color: #ffffff;
+  border: 2px solid #940082;
+  border-radius: 50px;
+  font-size: 18px;
+  resize: none;
+  width: 30%;
+}
+.planet-add__input, .planet-add__btn {
+  border: 2px solid #940082;
+  border-radius: 50px;
+  font-size: 18px;
+  resize: none;
+}
+.planet-add .postform {
+  background-color: #ffffff;
+}
+.planet-add__btn {
+  background: #940082;
+  border-radius: 50px;
+  box-shadow: 0px 1px 30px rgba(0, 0, 0, 0.15);
+  color: #ffffff;
+  cursor: pointer;
+  padding: 5px 30px;
+  position: absolute;
+  text-decoration: none;
+  transition: 0.5s;
+}
+.planet-add__btn:hover {
+  background-color: #ffffff;
+  border-radius: 50px;
+  color: #940082;
+}
+
 /* Fonts */
 @font-face {
   font-family: medium;
