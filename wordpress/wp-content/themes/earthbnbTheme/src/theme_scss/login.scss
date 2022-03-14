@@ -1,0 +1,102 @@
+.form_title {
+    margin-left: auto;
+    margin-right: auto;
+    width: 800px;
+    text-align: center;
+    margin-top:60px;
+    margin-bottom: 65px;
+    font-size: $h1;
+    background: $gradient;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+#loginform {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 60px;
+    width: 800px;
+    text-align: center;
+    input {
+        border-radius: 10px;
+    }
+    p { 
+        label{
+            font-size: $pdesc;
+            display:block;
+            white-space: nowrap;
+            margin-bottom: 1rem;
+        }
+        #user_login,
+        #user_pass{
+            width: 320px;
+            height: 40px;
+        }
+        #wp-submit {
+            margin-top: 45px;
+            font-size: $pdesc;
+            width: 165px;
+            height: 47px;
+            border: none;
+            background: $gradient;
+            color: $white;
+        }
+    }
+    .login-remember {  
+        margin-top: 40px
+
+    }
+}
+
+
+@media (min-width: 390px) and (max-width: 767px){
+    .form_title {
+        font-size: $h4;
+        width: 350px;
+        margin-bottom: 45px;
+    }
+    #loginform {
+        width: 350px;
+        p {
+            label{
+            font-size: $psmart;
+            }
+            #user_login,
+            #user_pass{
+            width: 230px;
+            height: 30px;
+        }
+            #wp-submit {
+            margin-top: 35px;
+            font-size: $psmart;
+            width: 125px;
+            height: 35px;
+            }
+        }
+    }
+}
+
+@media (min-width: 768px) and (max-width: 979px) {
+    .form_title {
+        font-size: $h2;
+        margin-bottom: 55px;
+    }
+    #loginform {
+        p {
+            label{
+            font-size: $ptab;
+            }
+            #user_login,
+            #user_pass{
+            width: 270px;
+            height: 35px;
+        }
+            #wp-submit {
+            margin-top: 40px;
+            font-size: $ptab;
+            width: 135px;
+            height: 40px;
+            }
+        }
+    }
+}

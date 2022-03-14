@@ -10,8 +10,9 @@ if (is_user_logged_in()) {
     wp_redirect($url);
     exit;
 }else{
-    get_header();
-    echo wp_login_form();
+    get_header(); ?>
+    <h2 class="form_title">Connexion</h2>
+    <?php echo wp_login_form();
 };
 
 get_footer();
