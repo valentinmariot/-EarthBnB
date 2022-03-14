@@ -1,7 +1,7 @@
 # EARTHBNB
 
 Projet WEBP2023 réalisé par :    
-• Chloé DOUSTALET
+• Chloé DOUSTALET    
 • Doriane FARAU    
 • Naiara TRIVINO     
 • Valentin MARIOT

@@ -77,7 +77,7 @@ function register_my_cpt_ad()
         "hierarchical" => false,
         "rewrite" => ["slug" => "ad", "with_front" => true],
         "query_var" => true,
-        "supports" => ["title", "editor", "excerpt", "thumbnail", "author", "custom-fields"],
+        "supports" => ["title", "editor", "excerpt","comments", "thumbnail", "author", "custom-fields"],
         "show_in_graphql" => false,
     ];
 
@@ -220,7 +220,7 @@ function wp_last_adds() {
         the_post_thumbnail();
         echo '</div>';
         echo '<li><a class="home-last__link" href="'.get_the_permalink().'" rel="bookmark">'.get_the_title().'</a></li>';
-        echo '<p class="home-last__price">Prix : '.get_post_meta(get_the_ID(), 'ad_price', true).'€ /sem</p>';
+        echo '<p class="home-last__price">Prix : '.get_post_meta(get_the_ID(), 'ad_price', true).'€ /jour</p>';
         echo get_the_excerpt();
         echo '<div class="home-last__details">';
         echo '<br><a class="home-last__details" href="'.get_permalink().'">Plus de détails </a><br><br>';
@@ -229,6 +229,64 @@ function wp_last_adds() {
         echo '</div>';
         echo '</div>';
     endwhile;
+    wp_reset_postdata();
+};
+
+#display user articles
+function wp_user_ads($user_id) {
+    $args = array(
+        'post_type' => 'ads',
+        'post_status' => 'publish, pending',
+        "author" => $user_id
+    );
+
+    $query = new WP_Query($args);
+    while($query -> have_posts()) :
+        $query->the_post();
+        echo '<li>'.get_the_title().'</li>';
+        the_post_thumbnail();
+        if(get_post_status == "pending"){
+            echo '<br><a href="'.home_url("/creer-son-annonce/").'">Modifier</a><br>';
+        }
+        $post_id= get_the_ID();
+        $my_post = array(
+            'ID' => $post_id,
+            'post_status'   => 'draft',
+        );
+        # commenter car archive tous les posts sur la page même si on ne clique pas sur le bouton
+        #echo '<a href="'. wp_update_post( $my_post ).'">Archiver</button><br>';
+    endwhile;
+    wp_reset_postdata();
+};
+
+#filter add price
+function wp_ad_filter_price($price) {
+    $args = array(
+        'meta_key'     => 'ad_price',
+        'meta_value'   => $price,
+        'meta_compare' => '<=',
+        'post_type'    => 'ads'
+    );
+
+    $query = new WP_Query($args);
+    echo '<div class="ad__cards">';
+    while($query -> have_posts()) :
+        $query->the_post();
+        echo '<div class="ad__card">';
+        echo '<div class="ad__card-img">';
+        the_post_thumbnail();
+        echo '</div>';
+        echo '<li><a class="ad__card-link" href="'.get_the_permalink().'" rel="bookmark">'.get_the_title().'</a></li>';
+        echo '<p><i class="fa-solid fa-money-bill"></i> Prix :'.get_post_meta(get_the_ID(), 'ad_price', true).'€ /sem</p>';
+        echo '<p>Distance :'.get_post_meta(get_the_ID(), 'ad_localisation', true). 'parsecs</p>';
+        echo '<div class="ad__card-content">';
+        echo get_the_excerpt();
+        echo '</div>';
+        echo '<br><div class="ad__card-details"><a href="'.get_permalink().'">Détails </a></div><br>';
+        echo '</div>';
+    endwhile;
+    echo '</div>';
+    wpheticPaginate();
     wp_reset_postdata();
 };
 
@@ -255,28 +313,32 @@ function wpheticPaginate() {
     return ob_get_clean();
 };
 
-function wp_adds() {
-    $args = array(
-        'posts_per_page' => '9',
-        'post_type' => 'ads',
-        'post_status' => 'publish',
-        'orderby' => 'date',
+function post_new_ad(){    
+    // create post object with the form values from planet-add.php
+    $new_ad = array(
+    'post_title'    => $_POST['planet_name'],
+    'post_content' => $_POST['description'],
+    'post_status'   => 'pending',
+    'post_type' => $_POST['post_type'],
+    'post_author'=> get_current_user_id(),
+    'comment_status' => 'closed',
+    'meta_input' => array(
+        'ad_price' => $_POST['ad_price'],
+        'ad_surface' => $_POST['ad_surface'],
+        'ad_distance' => $_POST['ad_distance'],
+    )
     );
-
-    $query = new WP_Query($args);
-    while($query -> have_posts()) :
-        $query->the_post();
-        the_post_thumbnail();
-        echo '<li><a href="'.get_the_permalink().'" rel="bookmark">'.get_the_title().'</a></li>';
-        echo '<p>Prix : '.get_post_meta(get_the_ID(), 'ad_price', true).'€</p>';
-        echo '<p>Distance : '.get_post_meta(get_the_ID(), 'ad_localisation', true).' parsecs</p>';
-        echo get_the_excerpt();
-        echo '<br><a href="'.get_permalink().'">Détails </a><br><br>';
-    endwhile;
-    wpheticPaginate();
-    wp_reset_postdata();
-};
-
-function wp_categories(){
-
+    // insert the post into the database
+    $ad_id = wp_insert_post( $new_ad);
+    if ( $ad_id ) {
+        wp_redirect( "localhost:5555" );
+        exit;
+    }
 }
+post_new_ad();
+
+function wpb_comment_reply_text( $link ) {
+    $link = str_replace( 'Répondre', '', $link );
+    return $link;
+    }
+add_filter( 'comment_reply_link', 'wpb_comment_reply_text' );
