@@ -1,0 +1,73 @@
+#registerform {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 60px;
+    width: 800px;
+    text-align: center; 
+    input {
+        border-radius: 10px;
+    }
+    p {
+        label {
+            margin-bottom: 1rem;
+            font-size: 18px;
+            display:block;
+            white-space: nowrap;
+        }
+        .text{
+            width: 320px;
+            height: 40px;
+        }
+        #wp-registration {
+            margin-top: 45px;
+            font-size: $pdesc;
+            width: 205px;
+            height: 47px;
+            border: none;
+            background: $gradient;
+            color: $white;
+
+        }
+    }
+}
+
+@media (min-width: 390px) and (max-width: 767px){
+    #registerform {
+        width: 350px;
+        p {
+            label{
+            font-size: $psmart;
+            }
+            .text{
+            width: 230px;
+            height: 30px;
+        }
+            #wp-registration {
+            margin-top: 35px;
+            font-size: $psmart;
+            width: 125px;
+            height: 35px;
+            }
+        }
+    }
+}
+
+@media (min-width: 768px) and (max-width: 979px) {
+    #registerform {
+        p {
+            label{
+            font-size: $ptab;
+            }
+            .text{
+            width: 270px;
+            height: 35px;
+        }
+            #wp-registration {
+            margin-top: 40px;
+            font-size: $ptab;
+            width: 135px;
+            height: 40px;
+            }
+        }
+    }
+}
