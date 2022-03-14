@@ -29,7 +29,7 @@ function wpdocs_my_login_redirect( $url, $request, $user ) {
         if ( $user->has_cap( 'administrator' || 'ad_manager') ) {
             $url = admin_url();
         } else {
-            $url = home_url( '/account/' );
+            $url = home_url( '/mon-compte/' );
         }
     }
     return $url;
