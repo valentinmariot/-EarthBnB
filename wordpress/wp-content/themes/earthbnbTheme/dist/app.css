@@ -12088,6 +12088,7 @@ textarea.form-control-lg {
   border-radius: 50px;
   font-size: 18px;
   resize: none;
+  width: 30%;
 }
 .planet-add__input, .planet-add__btn {
   border: 2px solid #940082;
