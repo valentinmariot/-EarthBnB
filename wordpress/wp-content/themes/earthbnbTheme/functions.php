@@ -243,11 +243,13 @@ function wp_user_ads($user_id) {
     $query = new WP_Query($args);
     while($query -> have_posts()) :
         $query->the_post();
+        echo '<div>';
         echo '<li>'.get_the_title().'</li>';
         the_post_thumbnail();
         if(get_post_status() == "pending"){
             echo '<br><a href="'.home_url("/creer-son-annonce/").'">Modifier</a><br>';
         }
+        echo'</div>';
         $post_id= get_the_ID();
         $my_post = array(
             'ID' => $post_id,

@@ -11646,6 +11646,60 @@ textarea.form-control-lg {
 /* Buttons */
 /* Font */
 /* Import Theme */
+#account-title {
+  margin-left: 6.5%;
+  margin-top: 60px;
+}
+
+.container-ads {
+  margin: 5%;
+  grid-template-columns: 1fr 1fr 1fr;
+  display: grid;
+}
+.container-ads div {
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 30px;
+  box-shadow: 0px 1px 30px rgba(0, 0, 0, 0.15);
+  border-radius: 15px;
+  padding: 30px 60px;
+}
+.container-ads div li {
+  list-style: none;
+  font-size: 18px;
+  font-weight: bolder;
+}
+.container-ads div a {
+  color: #940082;
+}
+.container-ads img {
+  height: 250px;
+  width: 250px;
+  margin-bottom: 30px;
+  margin-top: 30px;
+}
+
+@media (min-width: 390px) and (max-width: 767px) {
+  #account-title {
+    margin-left: 11.5%;
+    margin-top: 60px;
+  }
+
+  .container-ads {
+    grid-template-columns: 1fr;
+  }
+  .container-ads div {
+    padding: 20px 30px;
+  }
+}
+@media (min-width: 768px) and (max-width: 979px) {
+  .container-ads {
+    grid-template-columns: 1fr 1fr;
+  }
+  .container-ads div {
+    padding: 20px 30px;
+  }
+}
 .ad__cards {
   display: grid;
   gap: 20px;
