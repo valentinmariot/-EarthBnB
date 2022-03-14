@@ -213,11 +213,49 @@ function wp_last_adds() {
     $query = new WP_Query($args);
     while($query -> have_posts()) :
         $query->the_post();
+        echo '<div class="home-last__row">';
+        echo '<div class="home-last__column">';
+        echo '<div class="home-last__card">';
+        echo '<div class="home-last__img">';
         the_post_thumbnail();
-        echo '<li><a href="'.get_the_permalink().'" rel="bookmark">'.get_the_title().'</a></li>';
-        echo '<p>Prix : '.get_post_meta(get_the_ID(), 'ad_price', true).'€</p>';
+        echo '</div>';
+        echo '<li><a class="home-last__link" href="'.get_the_permalink().'" rel="bookmark">'.get_the_title().'</a></li>';
+        echo '<p class="home-last__price">Prix : '.get_post_meta(get_the_ID(), 'ad_price', true).'€ /sem</p>';
         echo get_the_excerpt();
-        echo '<br><a href="'.get_permalink().'">Détails </a><br><br>';
+        echo '<div class="home-last__details">';
+        echo '<br><a class="home-last__details" href="'.get_permalink().'">Plus de détails </a><br><br>';
+        echo '</div>';
+        echo '</div>';
+        echo '</div>';
+        echo '</div>';
+    endwhile;
+    wp_reset_postdata();
+};
+
+#display user articles
+function wp_user_ads($user_id) {
+    $args = array(
+        'post_type' => 'ads',
+        'post_status' => 'publish, pending',
+        'orderby' => 'date',
+        "author" => $user_id
+    );
+
+    $query = new WP_Query($args);
+    while($query -> have_posts()) :
+        $query->the_post();
+        echo '<li>'.get_the_title().'</li>';
+        the_post_thumbnail();
+        if(get_post_status == "private"){
+            echo '<br><a href="'.home_url("/creer-son-annonce/").'">Modifier</a><br>';
+        }
+        $post_id= get_the_ID();
+        $my_post = array(
+            'ID' => $post_id,
+            'post_status'   => 'draft',
+        );
+        # commenter car archive tous les posts sur la page même si on ne clique pas sur le bouton
+        #echo '<a href="'. wp_update_post( $my_post ).'">Archiver</button><br>';
     endwhile;
     wp_reset_postdata();
 };

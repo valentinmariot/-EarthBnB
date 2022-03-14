@@ -1,19 +1,76 @@
 .home-menu-class {
+    display: flex;
+    justify-content: space-between;
+    background: $black;
+}
+
+.menu {
     align-items: center;
     background: $black;
     color: $white;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
+
+    & > ul {
+        display: inline-flex;
+    }
 }
 
-.menu {
+.page_item {
+    display: contents;
 
-    &-item {
+    & > a {
+        color: $white;
+        float: right;
+        margin: 10px 25px;
+        text-decoration: none;
+    }
+}
+
+.logo {
+    background: $black;
+    display: flex;
+    font-size: 40px;
+    padding-left: 5%;
+    &-title {
+        color: $white;
+        text-decoration: none;
+    }
+}
+
+
+
+.other-ebnb-class {
+    & > .home-menu-class {
+        display: flex;
+        justify-content: space-between;
+    }
+    
+    & > .menu {
+        align-items: center;
+        display: flex;
+        justify-content: flex-end;
+    
+        & > ul {
+            display: inline-flex;
+        }
+    }
+    
+    & > .page_item {
         display: contents;
-        margin: 5%;
-
+    
         & > a {
             float: right;
+            margin: 10px 25px;
+            text-decoration: none;
+        }
+    }
+    
+    & > .logo {
+        display: flex;
+        font-size: 40px;
+        padding-left: 5%;
+        &-title {
             text-decoration: none;
         }
     }
