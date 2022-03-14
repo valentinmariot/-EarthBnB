@@ -11755,6 +11755,26 @@ textarea.form-control-lg {
   color: #940082;
 }
 
+.archive-ads-form {
+  padding: 5%;
+}
+.archive-ads-form__btn {
+  background: #940082;
+  border-radius: 50px;
+  box-shadow: 0px 1px 30px rgba(0, 0, 0, 0.15);
+  color: #ffffff;
+  cursor: pointer;
+  padding: 5px 30px;
+  position: absolute;
+  text-decoration: none;
+  transition: 0.5s;
+}
+.archive-ads-form__btn:hover {
+  background-color: #ffffff;
+  border-radius: 50px;
+  color: #940082;
+}
+
 .home-menu-class {
   display: flex;
   justify-content: space-between;
